@@ -26,6 +26,14 @@ def self.find(id)
   return Student.new(student.first)
 end
 
+def house()
+  sql ="SELECT * FROM houses
+  WHERE id = $1"
+  values=[@house_id]
+  house = SqlRunner.run(sql,values)
+  return House.new(house.first)
+end
+
 def self.all()
   sql ="SELECT * FROM students"
   students = SqlRunner.run(sql)
