@@ -22,7 +22,8 @@ class Student
 def self.find(id)
   sql ="SELECT * FROM students WHERE ID = $1"
   values=[id]
-  return SqlRunner.run(sql,values).first
+  student= SqlRunner.run(sql,values)
+  return Student.new(student.first)
 end
 
 def self.all()

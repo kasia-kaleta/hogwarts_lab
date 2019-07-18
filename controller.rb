@@ -11,3 +11,16 @@ get '/students' do
 erb(:index)
 
 end
+
+#Create
+post '/students' do
+  @student = Student.new(params)
+  @student.save()
+  erb(:create)
+end
+
+#Show
+get '/students/:id' do
+  @student = Student.find(params[:id])
+  erb(:show)
+end
