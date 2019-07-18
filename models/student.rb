@@ -25,9 +25,10 @@ def self.find(id)
   return SqlRunner.run(sql,values).first
 end
 
-def self.find_all
+def self.all()
   sql ="SELECT * FROM students"
-  return SqlRunner.run(sql)
+  students = SqlRunner.run(sql)
+  return students.map{|student| Student.new(student)}
 end
 
   def self.delete_all()
